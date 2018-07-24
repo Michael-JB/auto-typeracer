@@ -54,7 +54,7 @@ def win_race():
     input_field.click()
     if type_at_max_speed:
         input_field.send_keys(race_text)
-    else
+    else:
         for char in race_text:
             input_field.send_keys(char)
             time.sleep(target_spc)
