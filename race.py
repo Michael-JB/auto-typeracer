@@ -1,4 +1,6 @@
+from __future__ import division
 import sys
+import time
 import selenium.webdriver as webdriver
 import selenium.webdriver.support.ui as ui
 from selenium.common.exceptions import TimeoutException, WebDriverException
@@ -6,6 +8,13 @@ from bs4 import BeautifulSoup
 
 typeracer_url = 'https://play.typeracer.com/'
 element_load_timeout = 45 # (seconds)
+
+# Set and calculate typing pace
+target_wpm = 100
+avg_word_length = 5.1
+target_spc = 1 / ((target_wpm / 60) * avg_word_length)
+
+type_at_max_speed = True
 
 # Load game url from command arguments, if any
 race_url = sys.argv[1] if len(sys.argv) > 1 else typeracer_url
@@ -43,7 +52,12 @@ def win_race():
 
     # Enter race text into input field
     input_field.click()
-    input_field.send_keys(race_text)
+    if type_at_max_speed:
+        input_field.send_keys(race_text)
+    else
+        for char in race_text:
+            input_field.send_keys(char)
+            time.sleep(target_spc)
 
 try:
     launch_race(multiplayer_race)
