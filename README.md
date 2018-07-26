@@ -1,7 +1,7 @@
 # Auto TypeRacer
 A simple python program to automate the victory of both practice and multiplayer [TypeRacer](https://play.typeracer.com/) games.
 
-# Installation
+## Installation
 * Install the required libraries with the following pip command: `pip install -r requirements.txt`
 
 ## Usage
